@@ -1,0 +1,57 @@
+<button type="button" (click)="back()" class="btn btn-info " style="position: absolute; left: 0;">
+    Back
+
+</button>
+<div class="container py-4 my-4 mx-auto d-flex flex-column">
+
+    <div class="header">
+        <div class="row r1">
+            <div class="col-md-9 abc">
+
+                <h1>{{products.name}}</h1>
+            </div>
+            <div class="col-md-7"> <img src="{{products.image}}" width="350px" height="350px"> 
+                <h5><b> BRAND: </b>{{products.brand}}</h5>
+                <h5><b> CODE: </b> {{products.code}}</h5>
+                <h5 ><b> Rating: </b> {{avgRating}}/5</h5>
+                <h5 ><b> Rating: </b> No review found</h5>
+                <h5> <b> DESCCRIPTION: </b> <br>{{products.description}}</h5>
+            </div>
+
+            <div class="col-md-5 p-0 klo">
+                <h5><b>Add Reviews</b></h5>
+                <form [formGroup]="formData" (ngSubmit)="postreview()" class="form-horizontal ">
+                    <label for="exampleInputEmail1" class="form-label">Product Id</label>
+                    <input class="form-control" type="text" placeholder=" Enter Product id" id="id" name="id"
+                        formControlName="id" required> <br>
+                        <span class="error" *ngIf="id?.invalid && id?.touched">Email is required</span>
+                    <label for="exampleInputEmail1" class="form-label">Heading</label>
+                    <input class="form-control" type="text" placeholder=" Enter heading" id="heading" name="heading"
+                        formControlName="heading" required> <br>
+                        <!-- <span class="error" *ngIf="heading?.invalid && heading?.touched">Heading is required</span> <br> -->
+                    <label for="exampleInputEmail1" class="form-label">Rating</label>
+                    <input class="form-control" type="text" placeholder="Rating" id="rating" name="rating"
+                        formControlName="rating" required> <br>
+                    <label for="exampleInputEmail1" class="form-label">Review</label>
+                    <input class="form-control" type="text" placeholder="Enter Review" id="Review" name="review"
+                        formControlName="review" required> <br>
+
+                    <button class="btn signin btn btn-info">Add Review</button>
+                </form><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <h5><b> Reviews for Product</b></h5>
+                <div class="card mt-5" *ngFor=" let r of reviews ">
+                    <div class="card-body text-center mx-auto">
+                        <div class='cvp'>
+                            <h6 class="card-title font-weight-bold" style="position: absolute; left: 0"> <b> Heading :
+                                </b>{{r.heading}}</h6> <br>
+                            <h6 class="card-title font-weight-bold" style="position: absolute; left: 0"> <b> Rating :
+                                </b>{{r.rating}}</h6> <br>
+                            <h6 class="card-title font-weight-bold" style="position: absolute; left: 0"> <b> Review :
+                                </b>{{r.review}}</h6>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

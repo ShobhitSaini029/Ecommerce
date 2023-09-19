@@ -1,0 +1,43 @@
+<head>
+    <!-- Include the FontAwesome CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<nav class="bg-dark">
+    <div class="navbar-left">
+        <span>Welcome to Admin Dashboard</span>
+    </div>
+    <div class="navbar-right">
+        <button class="logout-button" (click)="redirect()">Logout</button>
+    </div>
+</nav>
+</head>
+
+<p class="tabletitle">Review Request</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Heading</th>
+            <th>Product Rating</th>
+            <th>Product Review</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of formDataArray">
+            <td>{{ item.id }}</td>
+            <td>{{ item.heading }}</td>
+            <td>{{ item.rating }}</td>
+            <td>{{item.review}}</td>
+            <td>
+                <button type="button" class="action-button" (click)="accept(item.rid)">
+                    <i class="fas fa-check"></i>
+                </button>
+                <button type="button" class="action-button" (click)="reject(item.rid)">
+                    <i class="fas fa-times"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
